@@ -13,9 +13,12 @@ public class EmpWage
         int totalWageOfMonth = 0;
         int day = 0;
         int totalWorkingDay = 0;
+        int totalWorkingHourForMonth = 100;
+        int totalDailyWorkingHour = 0;
+
 
         System.out.println("Welcome To Employee Wage Computation Program!");
-        while (day < totalDaysOfMonth && totalWorkingDay < WorkingDayPerMonth)
+        while (day < totalDaysOfMonth && totalWorkingDay < WorkingDayPerMonth && totalDailyWorkingHour < totalWorkingHourForMonth)
         {
             //Checking Employee Present or Absent.
             switch ((int) ((Math.random() * 10) % 3))
@@ -26,6 +29,7 @@ public class EmpWage
                     System.out.println("Daily Employee Wage:" + dailyWage);
                     totalWageOfMonth += dailyWage; //Calculating Total Monthly Wage.
                     totalWorkingDay++;
+                    totalDailyWorkingHour++;
                     break;
                 }
                 case 2: {
@@ -34,6 +38,7 @@ public class EmpWage
                     System.out.println("Daily Employee Wage:" + dailyWage);
                     totalWageOfMonth += dailyWage; //Calculating Total Monthly Wage.
                     totalWorkingDay++;
+                    totalDailyWorkingHour++;
                     break;
                 }
                 default://if all cases are not matched.
