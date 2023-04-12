@@ -11,20 +11,24 @@ public class EmpWage
 
         System.out.println("Welcome To Employee Wage Computation Program!");
         //Checking Employee Present or Absent.
-        switch ((int) ((Math.random() * 10) % 3))
+        switch ((int)((Math.random() * 10) % 3))
         {
-            case 1 -> {
+            case 1:
+            {
                 System.out.println("Employee is Present Full Time");
                 int dailyWage = wagePerHour * fullDayHour; //Calculating Full Time Daily Wage.
                 System.out.print("Daily Employee Wage:" + dailyWage);
+                break;
             }
-            case 2 -> {
+            case 2:
+            {
                 System.out.println("Employee is Present Part Time");
                 int dailyWage = wagePerHour * partTimeHour; //Calculating Part Time Daily Wage.
                 System.out.print("Daily Employee Wage:" + dailyWage);
+                break;
             }
-            default -> //if all cases are not matched.
-                    System.out.println("Employee is Absent");
+            default://if all cases are not matched.
+                System.out.println("Employee is Absent");
         }
     }
 }
