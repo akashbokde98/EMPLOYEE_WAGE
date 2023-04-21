@@ -3,21 +3,20 @@ import java.lang.Math;
 
 public class EmpWage
 {
-    public static void main(String[] args)
+    //class Variables
+    int wagePerHour = 20;
+    int fullDayHour = 8;
+    int partTimeHour = 4;
+    int WorkingDayPerMonth = 20;
+    int totalDaysOfMonth = 30;
+    int totalWageOfMonth = 0;
+    int day = 0;
+    int totalWorkingDay = 0;
+    int totalWorkingHourForMonth = 100;
+    int totalDailyWorkingHour = 0;
+    // Method To Calculate Total Employee Wage.
+    int calculateEmpWage()
     {
-        int wagePerHour = 20;
-        int fullDayHour = 8;
-        int partTimeHour = 4;
-        int WorkingDayPerMonth = 20;
-        int totalDaysOfMonth = 30;
-        int totalWageOfMonth = 0;
-        int day = 0;
-        int totalWorkingDay = 0;
-        int totalWorkingHourForMonth = 100;
-        int totalDailyWorkingHour = 0;
-
-
-        System.out.println("Welcome To Employee Wage Computation Program!");
         while (day < totalDaysOfMonth && totalWorkingDay < WorkingDayPerMonth && totalDailyWorkingHour < totalWorkingHourForMonth)
         {
             //Checking Employee Present or Absent.
@@ -46,6 +45,15 @@ public class EmpWage
             }
             day++;
         }
-        System.out.print("Total Wage for a Month:" + totalWageOfMonth);
+        return totalWageOfMonth;
+    }
+
+    public static void main(String[] args)
+    {
+        System.out.println("Welcome To Employee Wage Computation Program!");
+
+        EmpWage wage = new EmpWage();//Created obj of Class to call method.
+        int totalEmpWage = wage.calculateEmpWage();
+        System.out.print("Total Wage for a Month:" + totalEmpWage);
     }
 }
