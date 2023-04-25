@@ -2,19 +2,30 @@ package com.bl.empwage;
 import java.lang.Math;
 import java.util.Scanner;
 
-public class EmpWage
+public class EmpWageBuilder
 {
     //Common Data Of All Companies.
-    int fullDayHour = 8;
-    int partTimeHour = 4;
-    int totalDaysOfMonth = 30;
-    int totalDailyWorkingHour = 0;
-    int totalWorkingDay = 0;
-    int totalWageOfMonth = 0;
+    private static final int fullDayHour = 8;
+    private static final int partTimeHour = 4;
+    private static final int totalDaysOfMonth = 30;
+    private static int totalDailyWorkingHour, totalWorkingDay, totalWageOfMonth  = 0;
+    final String companyName;
+    final int wagePerHour, workingDayPerMonth, totalWorkingHourForMonth;
+    final long totalEmpWage;
 
+    //Constructor
+    public EmpWageBuilder(String companyName, int wagePerHour, int workingDayPerMonth, int totalWorkingHourForMonth)
+    {
+        this.companyName = companyName;
+        this.wagePerHour = wagePerHour;
+        this.workingDayPerMonth = workingDayPerMonth;
+        this.totalWorkingHourForMonth = totalWorkingHourForMonth;
+        totalEmpWage = calculateEmpWage();
+        System.out.println("Total Employee Wage is: " + totalEmpWage);
+    }
 
     // Method To Calculate Total Employee Wage.
-    int calculateEmpWage(int workingDayPerMonth, int totalWorkingHourForMonth, int wagePerHour)
+    public int calculateEmpWage()
     {
         int day = 0;
         while (day < totalDaysOfMonth && totalWorkingDay < workingDayPerMonth && totalDailyWorkingHour < totalWorkingHourForMonth)
@@ -47,31 +58,25 @@ public class EmpWage
     {
         System.out.println("Welcome To Employee Wage Computation Program!");
         Scanner sc = new Scanner(System.in);
-        //Variable Declaration
-        int wagePerHour;
-        int WorkingDayPerMonth;
-        int totalWorkingHourForMonth;
-        int totalEmpWage;
-
         System.out.print("Enter Number Of Companies:");
         int numOfCmp = sc.nextInt();
-        //Created obj of Class to call method.
-        EmpWage obj = new EmpWage();
-        //Iterating Over Numbers Of Company and Calculating Emp Wage.
+
+        //Iterating Over Numbers Of Company and Printing Emp Wage.
         for (int i = 1; i <= numOfCmp; i++)
         {
             System.out.println("Enter Data For Company-"+ i);
-            //Initializing
+            //Taking Input Data
+            System.out.print("Enter Company Name:");
+            String companyName = sc.next();
             System.out.print("Wage Per Hour:");
-            wagePerHour = sc.nextInt();
+            int wagePerHour = sc.nextInt();
             System.out.print("Working Day Per Month:");
-            WorkingDayPerMonth = sc.nextInt();
+            int WorkingDayPerMonth = sc.nextInt();
             System.out.print("Working Hour Per Month:");
-            totalWorkingHourForMonth = sc.nextInt();
-            //Calling and Storing Method
-            totalEmpWage = obj.calculateEmpWage(WorkingDayPerMonth, totalWorkingHourForMonth, wagePerHour);
-            System.out.println("Total Employee Wage:" + totalEmpWage);
-            System.out.println("------------------");
+            int totalWorkingHourForMonth = sc.nextInt();
+            //Creating Object and Calling Constructor
+            EmpWageBuilder obj = new EmpWageBuilder(companyName, wagePerHour, WorkingDayPerMonth, totalWorkingHourForMonth);
+            System.out.println("---------------------");
         }
     }
 }
